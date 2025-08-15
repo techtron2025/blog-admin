@@ -35,7 +35,7 @@ export const asyncRouter = [
         path: '/',
         name: 'layout',
         component: () => import('@/views/layout/index.vue'),
-        redirect: '/article',
+        redirect: '/acticle',
         meta: {
             title: '仪表盘',
             hidden: false,
