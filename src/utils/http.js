@@ -12,6 +12,7 @@ axios.interceptors.request.use(
         NProgress.start()
         //获取token
         config.headers.token = getStore('admin_token') || ''
+        config.baseURL = import.meta.env.VITE_URL
         return config
     },
     function (error) {
