@@ -106,8 +106,8 @@ function handleUploadImage(event, insertImage, files) {
 
 const $router = useRouter()
 onMounted(() => {
-    getclassifyList()
-    getLabelList()
+    // getclassifyList()
+    // getLabelList()
 })
 
 // 获取分类列表
@@ -209,11 +209,11 @@ const lableBack = () => {
 const rules = reactive({
     title: [{required: true, message: '请输入博文标题', trigger: 'blur'}],
     content: [{required: true, message: '请输入博文内容', trigger: 'change'}],
-    url: [{required: true, message: '请上传博文封面图片', trigger: 'change'}],
-    type: [{required: true, message: '请选择博文状态', trigger: 'change'}],
-    label: [{required: true, message: '请选择博文标签', trigger: 'blur'}],
-    abstract: [{required: true, message: '请输入博文摘要', trigger: 'blur'}],
-    state: [{required: true, message: '请选择博文状态', trigger: 'blur'}],
+    // url: [{required: true, message: '请上传博文封面图片', trigger: 'change'}],
+    // type: [{required: true, message: '请选择博文状态', trigger: 'change'}],
+    // label: [{required: true, message: '请选择博文标签', trigger: 'blur'}],
+    // abstract: [{required: true, message: '请输入博文摘要', trigger: 'blur'}],
+    // state: [{required: true, message: '请选择博文状态', trigger: 'blur'}],
 })
 </script>
 

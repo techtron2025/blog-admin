@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 // markdown 语法高亮
 import prismjs from 'vite-plugin-prismjs'
-import compression from 'vite-plugin-compression';
+import compression from 'vite-plugin-compression'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
@@ -35,7 +35,7 @@ export default defineConfig(({command, mode}) => {
                 symbolId: 'icon-[dir]-[name]',
             }),
             prismjs({
-                languages: ['json','css','javascript','bash','docker','http']
+                languages: ['json', 'css', 'javascript', 'bash', 'docker', 'http'],
             }),
             visualizer({
                 filename: 'stats.html',
@@ -44,13 +44,12 @@ export default defineConfig(({command, mode}) => {
                 brotliSize: true, // 收集 brotli 大小并将其显示
             }),
             compression({
-                  verbose: true, // 输出压缩日志
-                  disable: false, // 是否禁用压缩
-                  threshold: 10240, // 对超过10KB的文件进行压缩
-                  algorithm: 'gzip', // 使用gzip压缩
-                  ext: '.gz' // 压缩后文件的扩展名
-            })
-            
+                verbose: true, // 输出压缩日志
+                disable: false, // 是否禁用压缩
+                threshold: 10240, // 对超过10KB的文件进行压缩
+                algorithm: 'gzip', // 使用gzip压缩
+                ext: '.gz', // 压缩后文件的扩展名
+            }),
         ],
         resolve: {
             alias: {
@@ -63,6 +62,7 @@ export default defineConfig(({command, mode}) => {
             preprocessorOptions: {
                 scss: {
                     additionalData: `@use "./src/assets/css/variable.scss" as *;`, // 全局引入 SCSS 变量
+                    silenceDeprecations: ['legacy-js-api'],
                 },
             },
         },

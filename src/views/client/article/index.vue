@@ -114,7 +114,7 @@ const hotList = [
 const {headerCellStyle, container, tabHeight} = useTable(0)
 
 onMounted(() => {
-    getClassifyList()
+    // getClassifyList()
     getList()
 })
 
@@ -135,7 +135,7 @@ const form = reactive({
 })
 const list = ref([])
 const getList = () => {
-    form.pageNum = pageNum.value
+    form.current = pageNum.value
     form.pageSize = pageSize.value
     api.articleList(form).then((res) => {
         list.value = res.data.records

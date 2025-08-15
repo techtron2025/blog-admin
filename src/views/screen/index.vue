@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="screen" ref="screen">
-            <dv-border-box11 :color="['#4fd2dd', '#235fa7']" title="ZYL博客数据大屏">
+            <dv-border-box11 :color="['#4fd2dd', '#235fa7']" title="博客数据大屏">
                 <div class="content">
                     <div class="left">
                         <dv-border-box2 class="left-box" :color="['#4fd2dd', '#235fa7']">
