@@ -76,7 +76,7 @@ const login = (formEl) => {
     position: relative;
     width: 100%;
     height: 100%;
-    background: url('https://zylwin-1333341519.cos.ap-chengdu.myqcloud.com/bg/bg.png') no-repeat;
+    background: url('../../assets/imgs/banner.png') no-repeat;
     background-position: center;
     background-size: cover;
 }
@@ -111,7 +111,7 @@ const login = (formEl) => {
     transform: translateY(-50%);
     width: 320px;
     height: 420px;
-    background: url('https://zylwin-1333341519.cos.ap-chengdu.myqcloud.com/bg/bg.png') no-repeat center;
+    background: url('../../assets/imgs/banner.png') no-repeat center;
     background-size: cover;
     filter: blur(6px) brightness(0.9);
 }

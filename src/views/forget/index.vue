@@ -101,7 +101,7 @@ const goBack = () => {
     position: relative;
     width: 100%;
     height: 100%;
-    background: url('https://zylwin-1333341519.cos.ap-chengdu.myqcloud.com/bg/bg.png') no-repeat center;
+    background: url('../../assets/imgs/banner.png') no-repeat center;
     background-size: cover;
 }
 .tips {
@@ -132,7 +132,7 @@ const goBack = () => {
     width: 350px;
     height: 400px;
     border-radius: 10px;
-    background: url('https://zylwin-1333341519.cos.ap-chengdu.myqcloud.com/bg/bg.png') no-repeat center;
+    background: url('../../assets/imgs/banner.png') no-repeat center;
     background-size: cover;
     filter: blur(6px) brightness(0.9);
 }
