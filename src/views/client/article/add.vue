@@ -28,8 +28,8 @@
                 <el-form-item label="博文标签" prop="tags" style="width: 90%">
                     <el-input v-model="form.tags" :rows="2" type="textarea" placeholder="请添加博文标签，以#开头，可添加多个"></el-input>
                 </el-form-item>
-                <el-form-item label="博文摘要" prop="abstract" style="width: 90%">
-                    <el-input v-model="form.abstract" :rows="4" type="textarea" placeholder="请输入博文标题"></el-input>
+                <el-form-item label="博文摘要" prop="blogAbstract" style="width: 90%">
+                    <el-input v-model="form.blogAbstract" :rows="4" type="textarea" placeholder="请输入博文标题"></el-input>
                 </el-form-item>
 
                 <el-form-item style="width: 90%">
@@ -87,9 +87,9 @@ const form = ref({
     filename: '',
     url: '',
     preUrl: '',
-    isTop: 0,
-    tags: [],
-    abstract: '',
+    isTop: 2,
+    tags: '',
+    blogAbstract: '',
 })
 
 const formRef = ref(null)
@@ -98,7 +98,7 @@ function save() {
     formRef.value.validate((valid, fields) => {
         if (valid) {
             let json = JSON.parse(JSON.stringify(form.value))
-            json.tags = form.value.tags.split('#')
+            json.tags = json.tags.split('#')
             json.tags.shift()
             settingStore.setLoading(true, '图片上传中...')
             api.articleAdd(json)
@@ -149,7 +149,7 @@ const rules = reactive({
     title: [{required: true, message: '请输入博文标题', trigger: 'blur'}],
     content: [{required: true, message: '请输入博文内容', trigger: 'change'}],
     // url: [{required: true, message: '请上传博文封面图片', trigger: 'change'}],
-    // abstract: [{required: true, message: '请输入博文摘要', trigger: 'blur'}],
+    blogAbstract: [{required: true, message: '请输入博文摘要', trigger: 'blur'}],
 })
 </script>
 

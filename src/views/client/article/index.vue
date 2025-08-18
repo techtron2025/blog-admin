@@ -4,15 +4,6 @@
         <!-- 查询 -->
         <div class="list-title" ref="listTitle">
             <el-input style="width: 230px" v-model="form.title" placeholder="请输入标题查询" clearable></el-input>
-            <el-select v-model="form.type" clearable placeholder="选择发布状态" style="width: 230px" class="f-ml-10">
-                <el-option v-for="item in classifyList" :key="item.id" :label="item.name" :value="item.id" />
-            </el-select>
-            <el-select v-model="form.isRecommend" clearable placeholder="选择是否推荐" style="width: 230px" class="f-ml-10">
-                <el-option v-for="item in recommendList" :key="item.value" :label="item.label" :value="item.value" />
-            </el-select>
-            <el-select v-model="form.isHot" clearable placeholder="选择是否火热" style="width: 230px" class="f-ml-10">
-                <el-option v-for="item in hotList" :key="item.value" :label="item.label" :value="item.value" />
-            </el-select>
             <div class="f-ml-10">
                 <el-button type="primary" @click="getList">查 询</el-button>
             </div>
@@ -30,26 +21,10 @@
                         <el-image style="width: 100%; height: 30px" :src="row.fullUrl" :preview-src-list="[row.fullUrl]" fit="cover" />
                     </template>
                 </el-table-column>
-                <el-table-column prop="typeName" label="博文类型" min-width="70"></el-table-column>
-                <el-table-column prop="isHot" label="是否火热" min-width="70">
-                    <template #default="{row}">
-                        <span :class="row.isHot == 1 ? 'green' : ''">{{ row.state == 1 ? '火热' : '不火热' }}</span>
-                    </template>
-                </el-table-column>
-                <el-table-column prop="isRecommend" label="是否推荐" min-width="70">
-                    <template #default="{row}">
-                        <span :class="row.isRecommend == 1 ? 'green' : ''">{{ row.state == 1 ? '推荐' : '不推荐' }}</span>
-                    </template>
-                </el-table-column>
                 <el-table-column prop="visitors" label="浏览人数" min-width="70"></el-table-column>
                 <el-table-column prop="comments" label="评论数" min-width="70"></el-table-column>
                 <el-table-column prop="createTime" label="创建时间" min-width="130"></el-table-column>
                 <el-table-column prop="updateTime" label="修改时间" min-width="130"></el-table-column>
-                <el-table-column prop="state" label="是否发布" min-width="70">
-                    <template #default="{row}">
-                        <span :class="row.state == 1 ? 'green' : ''">{{ row.state == 1 ? '已发布' : '未发布' }}</span>
-                    </template>
-                </el-table-column>
                 <el-table-column label="操作" width="200" fixed="right">
                     <template #default="{row}">
                         <el-button type="warning" size="small" @click="detailHandle(row.id)">详情</el-button>

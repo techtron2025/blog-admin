@@ -13,25 +13,13 @@
                 <i>{{ info.visitors || 0 }}</i>
             </div>
             <div class="f-ml-20">
-                <span>置顶：</span>
-                <i>{{ info.isTop == 1 ? '是' : '否' }}</i>
-            </div>
-            <div class="f-ml-20">
-                <span>火热：</span>
-                <i>{{ info.isHot == 1 ? '是' : '否' }}</i>
-            </div>
-            <div class="f-ml-20">
-                <span>推荐：</span>
-                <i>{{ info.isRecommend == 1 ? '是' : '否' }}</i>
-            </div>
-            <div class="f-ml-20">
                 <span>创建时间：</span>
                 <i>{{ info.createTime }}</i>
             </div>
         </div>
     </section>
     <section class="f-plr—20 f-mt-20">
-        <el-alert :description="info.abstract" title="摘要" show-icon :closable="false" type="info"></el-alert>
+        <el-alert :description="info.blogAbstract" title="摘要" show-icon :closable="false" type="info"></el-alert>
     </section>
 
     <v-md-editor v-model="info.content" mode="preview" height="''"></v-md-editor>
