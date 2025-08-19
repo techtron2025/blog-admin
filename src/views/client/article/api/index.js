@@ -23,6 +23,6 @@ export default {
         return _http('post', {url: '/blog/delete', apiName: '删除博文'}, params, loading, headers)
     },
     upload(params, loading, headers) {
-        return _http('post', {url: '/api/common/upload/single', apiName: '图片上传'}, params, loading, headers)
+        return _http('post', {url: '/file/upload', apiName: '图片上传'}, params, loading, headers)
     },
 }

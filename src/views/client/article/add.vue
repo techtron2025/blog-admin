@@ -66,11 +66,11 @@ function handleUploadImage(event, insertImage, files) {
 
         const formData = new FormData()
         formData.append('file', _file) // 通过append向form对象添加数据
-        formData.append('type', 'markdown') // 通过append向form对象添加数据
+        formData.append('biz', 'blog_image') // 通过append向form对象添加数据
         settingStore.setLoading(true, '上传图片中...')
         api.upload(formData, true, {'Content-Type': 'multipart/form-data'}).then((res) => {
             insertImage({
-                url: res.data.fullUrl,
+                url: res.data,
             })
             settingStore.setLoading(false)
         })
@@ -84,7 +84,6 @@ const $router = useRouter()
 const form = ref({
     content: '',
     title: '',
-    filename: '',
     url: '',
     preUrl: '',
     isTop: 2,
@@ -135,10 +134,10 @@ function uploadChange({raw: file}) {
 
         let formData = new FormData()
         formData.append('file', _file)
+        formData.append('biz', 'blog_image') // 通过append向form对象添加数据
         settingStore.setLoading(true, '上传图片中...')
         api.upload(formData, true, {'Content-Type': 'multipart/form-data'}).then((res) => {
-            form.value.filename = res.data.filename
-            form.value.url = res.data.url
+            form.value.url = res.data
             settingStore.setLoading(false)
         })
     }
@@ -148,7 +147,7 @@ function uploadChange({raw: file}) {
 const rules = reactive({
     title: [{required: true, message: '请输入博文标题', trigger: 'blur'}],
     content: [{required: true, message: '请输入博文内容', trigger: 'change'}],
-    // url: [{required: true, message: '请上传博文封面图片', trigger: 'change'}],
+    url: [{required: true, message: '请上传博文封面图片', trigger: 'change'}],
     blogAbstract: [{required: true, message: '请输入博文摘要', trigger: 'blur'}],
 })
 </script>

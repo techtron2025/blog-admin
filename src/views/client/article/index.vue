@@ -16,9 +16,9 @@
         <div class="table-content" ref="container">
             <el-table :data="list" border stripe :height="tabHeight" :header-cell-style="headerCellStyle" :cell-style="cellStyle">
                 <el-table-column prop="title" label="博文名称" min-width="200"></el-table-column>
-                <el-table-column prop="fullUrl" label="博文图片" min-width="70">
+                <el-table-column prop="url" label="博文图片" min-width="70">
                     <template #default="{row}">
-                        <el-image style="width: 100%; height: 30px" :src="row.fullUrl" :preview-src-list="[row.fullUrl]" fit="cover" />
+                        <el-image style="width: 100%; height: 30px" :src="row.url" :preview-src-list="[row.url]" fit="cover" />
                     </template>
                 </el-table-column>
                 <el-table-column prop="visitors" label="浏览人数" min-width="70"></el-table-column>
