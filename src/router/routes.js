@@ -195,7 +195,7 @@ export const asyncRouter = [
             {
                 path: '/acticle/edit',
                 name: 'acticle/edit',
-                component: () => import('@/views/client/article/edit.vue'),
+                component: () => import('@/views/client/article/add.vue'),
                 meta: {
                     title: '编辑博文',
                     hidden: true,

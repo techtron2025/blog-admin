@@ -43,14 +43,51 @@
 
 <script setup>
 import {successDeal,  compress, base64ToFile} from '@/utils/utils'
-import {ref, reactive} from 'vue'
-import {useRouter} from 'vue-router'
+import {ref, reactive, onMounted} from 'vue'
+import {useRouter, useRoute} from 'vue-router'
 
 import api from './api'
 import useSettingStore from '@/stores/modules/setting'
 const settingStore = useSettingStore()
 
 const leftToolbar = ref('undo redo clear| tip | h bold italic strikethrough quote | ul ol table hr | link image code | emoji')
+
+
+const $router = useRouter()
+const $route = useRoute()
+
+const form = ref({
+    content: '',
+    title: '',
+    url: '',
+    preUrl: '',
+    isTop: 2,
+    tags: '',
+    blogAbstract: '',
+})
+
+const formRef = ref(null)
+
+onMounted(() => {
+    let id = $route.query.id
+    id && getArticleDetail(id)
+})
+
+function getArticleDetail(id) {
+    api.articleDetail({id}).then((res) => {
+        for (let key in form.value) {
+            if (key == 'preUrl') {
+                form.value[key] = res.data['url']
+            } else if (key == 'tags') {
+                let tags = JSON.parse(res.data['tags']).join('#')
+                if (tags!== '') tags = '#' + tags;
+                form.value[key] = tags
+            } else {
+                form.value[key] = res.data[key]
+            }
+        }
+    })
+}
 
 function handleUploadImage(event, insertImage, files) {
     let file = files[0]
@@ -77,21 +114,7 @@ function handleUploadImage(event, insertImage, files) {
     }
 }
 
-const $router = useRouter()
 
-
-
-const form = ref({
-    content: '',
-    title: '',
-    url: '',
-    preUrl: '',
-    isTop: 2,
-    tags: '',
-    blogAbstract: '',
-})
-
-const formRef = ref(null)
 
 function save() {
     formRef.value.validate((valid, fields) => {
@@ -100,6 +123,19 @@ function save() {
             json.tags = json.tags.split('#')
             json.tags.shift()
             settingStore.setLoading(true, '图片上传中...')
+            if ($route.query.id) {
+                json.id = $route.query.id
+                api.articleEdit(json)
+                .then((res) => {
+                    $router.push('/acticle')
+                    successDeal('新增成功')
+                    settingStore.setLoading(false)
+                })
+                .catch((error) => {
+                    settingStore.setLoading(false)
+                })
+                return
+            }
             api.articleAdd(json)
                 .then((res) => {
                     $router.push('/acticle')

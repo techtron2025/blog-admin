@@ -14,7 +14,7 @@ export default {
         return _http('post', {url: '/blog/add', apiName: '新增博文'}, params, loading, headers)
     },
     articleEdit(params, loading, headers) {
-        return _http('post', {url: '/api/admin/article/edit', apiName: '修改博文'}, params, loading, headers)
+        return _http('post', {url: '/blog/edit', apiName: '修改博文'}, params, loading, headers)
     },
     articleDetail(params, loading, headers) {
         return _http('post', {url: '/blog/detail', apiName: '博文详情'}, params, loading, headers)
