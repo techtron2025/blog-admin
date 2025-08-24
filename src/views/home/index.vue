@@ -1,7 +1,7 @@
 <template>
     <div class="home-box">
         <div class="home-box-header">
-            <div class="item">
+            <!-- <div class="item">
                 <div class="top dy dy-jc-b dy-ai-c">
                     <span class="f-wb">总访客</span>
                     <img style="width: 30px" src="../../assets/imgs/visitor.png" alt="" />
@@ -44,6 +44,17 @@
                         <span class="f-wb black">{{ tabInfo.currnetComent }} 条</span>
                     </div>
                 </div>
+            </div> -->
+
+            <div class="item">
+                <div class="top dy dy-jc-b dy-ai-c">
+                    <span class="f-wb">CPU使用率</span>
+                    <img style="width: 30px" src="../../assets/imgs/rong.png" alt="" />
+                </div>
+
+                <div class="bottom">
+                    <p class="f-fs-20 f-wb black">{{ tabInfo.usedCpuRate }}</p>
+                </div>
             </div>
 
             <div class="item">
@@ -53,10 +64,25 @@
                 </div>
 
                 <div class="bottom">
-                    <p class="f-fs-20 f-wb black">{{ Math.round(tabInfo.totalmem) }} G</p>
+                    <p class="f-fs-20 f-wb black">{{ tabInfo.totalMemory }}</p>
                     <div class="dy dy-jc-b dy-ai-c f-mt-20">
-                        <span>可用内存</span>
-                        <span class="f-wb black">{{ Math.round(tabInfo.freemem) }} G</span>
+                        <span>已用内存</span>
+                        <span class="f-wb black">{{ tabInfo.usedMemory }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="top dy dy-jc-b dy-ai-c">
+                    <span class="f-wb">jvm总内存</span>
+                    <img style="width: 30px" src="../../assets/imgs/rong.png" alt="" />
+                </div>
+
+                <div class="bottom">
+                    <p class="f-fs-20 f-wb black">{{ tabInfo.jvmTotalMem }}</p>
+                    <div class="dy dy-jc-b dy-ai-c f-mt-20">
+                        <span>jvm已用内存</span>
+                        <span class="f-wb black">{{ tabInfo.jvmUsedMem }}</span>
                     </div>
                 </div>
             </div>
@@ -75,15 +101,15 @@ import {onMounted, ref, shallowRef} from 'vue'
 import api from './api'
 
 onMounted(() => {
-    getVisitorAdd()
-    window.onresize = () => resize()
-    getTabList()
-    getEchartList()
+    // getVisitorAdd()
+    // window.onresize = () => resize()
+    getSystemInfo()
+    // getEchartList()
 })
 
 const tabInfo = ref({})
-const getTabList = () => {
-    api.tabList().then((res) => {
+const getSystemInfo = () => {
+    api.getSystemInfo().then((res) => {
         tabInfo.value = res.data
     })
 }
