@@ -104,9 +104,6 @@ function getClassifyList() {
 // 博文列表
 const form = reactive({
     title: '',
-    type: '',
-    isHot: '',
-    isRecommend: '',
 })
 const list = ref([])
 const getList = () => {
